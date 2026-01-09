@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DetAIthon 2K26</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;500;700&display=swap"
+        rel="stylesheet">
+
+    <style>
+        * {
+            box-sizing: border-box
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Montserrat', sans-serif;
+            color: #fff;
+            background: #000;
+            overflow-x: hidden
+        }
+
+        /* BACKGROUND */
+        .bg {
+            position: fixed;
+            inset: 0;
+            background:
+                radial-gradient(circle at 20% 30%, rgba(229, 9, 20, .35), transparent 40%),
+                radial-gradient(circle at 80% 60%, rgba(229, 9, 20, .25), transparent 45%),
+                linear-gradient(180deg, #000, #080000);
+            animation: pulse 6s ease-in-out infinite alternate;
+            z-index: -4
+        }
+
+        @keyframes pulse {
+            from {
+                filter: brightness(1)
+            }
+
+            to {
+                filter: brightness(1.2)
+            }
+        }
+
+        .lines::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            background: repeating-linear-gradient(-45deg,
+                    transparent, transparent 40px,
+                    rgba(229, 9, 20, .15) 42px,
+                    transparent 44px);
+            animation: moveLines 20s linear infinite;
+            z-index: -3
+        }
+
+        @keyframes moveLines {
+            from {
+                background-position: 0 0
+            }
+
+            to {
+                background-position: 400px 400px
+            }
+        }
+
+        .sparks span {
+            position: fixed;
+            bottom: -10px;
+            width: 4px;
+            height: 4px;
+            background: #e50914;
+            border-radius: 50%;
+            opacity: .6;
+            animation: spark 10s linear infinite
+        }
+
+        @keyframes spark {
+            from {
+                transform: translateY(0)
+            }
+
+            to {
+                transform: translateY(-120vh)
+            }
+        }
+
+        /* LAYOUT */
+        .container {
+            max-width: 900px;
+            margin: auto;
+            padding: 20px
+        }
+
+        .header {
+            text-align: center;
+            padding: 50px 10px
+        }
+
+        .header h1 {
+            font-family: 'Bebas Neue', cursive;
+            font-size: 54px;
+            letter-spacing: 6px;
+            color: #e50914
+        }
+
+        .header p {
+            color: #ccc
+        }
+
+        .section {
+            margin: 30px 0;
+            padding: 25px;
+            border-radius: 16px;
+            background: rgba(0, 0, 0, .85);
+            border: 1px solid rgba(229, 9, 20, .4);
+            box-shadow: 0 0 30px rgba(229, 9, 20, .25)
+        }
+
+        .section h2 {
+            font-family: 'Bebas Neue', cursive;
+            font-size: 30px;
+            letter-spacing: 3px;
+            color: #e50914
+        }
+
+        label {
+            color: #ffb3b3;
+            font-size: 13px
+        }
+
+        input {
+            width: 100%;
+            padding: 13px;
+            margin: 8px 0 18px;
+            border-radius: 8px;
+            border: 1px solid #333;
+            background: #050505;
+            color: #fff
+        }
+
+        button {
+            width: 100%;
+            padding: 18px;
+            border: none;
+            border-radius: 40px;
+            background: linear-gradient(90deg, #8b0000, #e50914);
+            color: white;
+            font-size: 20px;
+            font-family: 'Bebas Neue', cursive;
+            letter-spacing: 3px;
+            cursor: pointer
+        }
+
+        /* FOOTER */
+        .footer {
+            text-align: center;
+            padding: 60px 20px
+        }
+
+        .line {
+            height: 2px;
+            width: 80%;
+            margin: 0 auto 40px;
+            background: linear-gradient(90deg, transparent, #e50914, transparent)
+        }
+
+        .footer h3 {
+            font-family: 'Bebas Neue', cursive;
+            letter-spacing: 4px;
+            font-size: 30px;
+            color: #e50914
+        }
+
+        .name {
+            color: #ffb3b3;
+            font-weight: 600
+        }
+
+        .role {
+            color: #aaa;
+            font-size: 14px
+        }
+
+        .head {
+            color: #e50914;
+            margin-top: 25px;
+            font-weight: 600;
+            letter-spacing: 2px
+        }
+
+        /* SOCIALS */
+        .socials {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            flex-wrap: wrap
+        }
+
+        .socials a {
+            text-decoration: none
+        }
+
+        .socials button {
+            padding: 10px 26px;
+            background: transparent;
+            border: 1px solid #e50914;
+            color: #e50914;
+            font-family: 'Bebas Neue', cursive;
+            font-size: 16px;
+            border-radius: 30px;
+            transition: .3s
+        }
+
+        .socials button:hover {
+            background: #e50914;
+            color: black
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="bg"></div>
+    <div class="lines"></div>
+    <div class="sparks">
+        <span style="left:10%"></span>
+        <span style="left:30%"></span>
+        <span style="left:50%"></span>
+        <span style="left:70%"></span>
+        <span style="left:90%"></span>
+    </div>
+
+    <div class="header">
+        <h1>DetAIthon 2K26</h1>
+        <p>IEEE Robotics & Automation Society</p>
+    </div>
+
+    <!-- LOGOS -->
+    <div class="container" style="display:flex;justify-content:center;gap:24px;">
+        <img src="sb logo.jpeg" style="max-width:140px;border-radius:50%">
+        <img src="RAS logo.jpeg" style="max-width:140px;border-radius:50%">
+    </div>
+
+    <form id="registrationForm" enctype="multipart/form-data">
+        <div class="container">
+
+            <!-- THE MANDATE -->
+            <div class="section">
+                <h2>The Mandate</h2>
+                <p>This 24-hour hackathon is a platform for students to innovate, collaborate, and build impactful tech
+                    solutions.</p>
+                <ul>
+                    <li><b style="color:#ffb3b3">Exactly 5 members per team</b></li>
+                    <li><b style="color:#ffb3b3">2 EE Credits</b></li>
+                    <li><b style="color:#ffb3b3">Internship opportunities</b></li>
+                </ul>
+            </div>
+
+            <!-- TEAM NAME -->
+            <div class="section">
+                <h2>Team Registration Details</h2>
+                <label>Team Name</label>
+                <input id="team" name="team" required>
+            </div>
+
+            <!-- TEAM LEADER -->
+            <div class="section">
+                <h2>1. Team Leader Details</h2>
+                <label>Full Name</label><input name="l1" required>
+                <label>Email</label><input name="l2" required>
+                <label>Mobile</label><input name="l3">
+                <label>Registration Number</label><input name="l4">
+            </div>
+
+            <!-- MEMBER 1 -->
+            <div class="section">
+                <h2>2. Member Details</h2>
+                <label>Full Name</label><input name="m11">
+                <label>Email</label><input name="m12">
+                <label>Mobile</label><input name="m13">
+                <label>Registration Number</label><input name="m14">
+            </div>
+
+            <!-- MEMBER 2 -->
+            <div class="section">
+                <h2>3. Member Details</h2>
+                <label>Full Name</label><input name="m21">
+                <label>Email</label><input name="m22">
+                <label>Mobile</label><input name="m23">
+                <label>Registration Number</label><input name="m24">
+            </div>
+
+            <!-- MEMBER 3 -->
+            <div class="section">
+                <h2>4. Member Details</h2>
+                <label>Full Name</label><input name="m31">
+                <label>Email</label><input name="m32">
+                <label>Mobile</label><input name="m33">
+                <label>Registration Number</label><input name="m34">
+            </div>
+
+            <!-- MEMBER 4 -->
+            <div class="section">
+                <h2>5. Member Details</h2>
+                <label>Full Name</label><input name="m41">
+                <label>Email</label><input name="m42">
+                <label>Mobile</label><input name="m43">
+                <label>Registration Number</label><input name="m44">
+            </div>
+
+            <!-- PAYMENT -->
+            <div class="section">
+                <h2>Payment & Verification</h2>
+                <p><b style="color:#ffb3b3">Fee Details:</b> ₹1000 Total (₹250 per head)</p>
+                <p><b style="color:#ffb3b3">Account Name:</b> IEEE Student Branch</p>
+                <p><b style="color:#ffb3b3">Account Number:</b> 335602011000121</p>
+                <p><b style="color:#ffb3b3">Bank Name:</b> Union Bank of India</p>
+                <p><b style="color:#ffb3b3">Branch Name:</b> Krishnankoil, Watrap</p>
+                <p><b style="color:#ffb3b3">IFSC Code:</b> UBIN0562734</p>
+                <p><b style="color:#ffb3b3">MICR Code:</b> 626026503</p>
+            </div>
+
+            <div class="section">
+                <label>Transaction ID</label>
+                <input name="txn" required>
+            </div>
+
+            <div class="section">
+                <label>Payment Screenshot</label>
+                <input type="file" name="screenshot" accept="image/*" required>
+            </div>
+
+            <!-- WHATSAPP -->
+            <div class="section" style="text-align:center">
+                <h2>Stay in the Loop</h2>
+                <p style="color:#ccc">Join our community for updates & support</p>
+                <a href="https://chat.whatsapp.com/CP1UK1kiwlYLZ7v03ZdRWu" target="_blank">
+                    <button type="button" style="background:linear-gradient(90deg,#25D366,#128C7E)">JOIN WHATSAPP
+                        GROUP</button>
+                </a>
+            </div>
+
+            <button type="submit">CONFIRM & SUBMIT</button>
+
+        </div>
+    </form>
+
+    <!-- FOOTER -->
+    <div class="footer">
+        <div class="line"></div>
+
+        <h3>WITH SINCERE REGARDS</h3>
+        <p class="name">Dr. P. Deepalakshmi</p>
+        <p class="role">Dean, School of Computing</p>
+        <p class="name">Dr. R. Raja Subramanian</p>
+        <p class="role">HOD / CSE<br>IEEE SB Counsellor & IEEE RAS Chapter Advisor</p>
+
+        <h3>CONTACT DETAILS</h3>
+        <p class="head">Faculty Incharges</p>
+        <p>Dr. M Rajasekaran</p>
+        <p>Dr. N Subbu Lakshmi</p>
+        <p>Mrs. R Syed Ali Fathima</p>
+
+        <p class="head">Student Coordinators</p>
+        <p>CH Siva Mowny +91 8885448275</p>
+        <p>Guru Prasanth +91 9704640862</p>
+        <p>C Vishal +91 8590556670</p>
+        <p>N Sabari Vasan +91 9345864424</p>
+
+        <div class="socials">
+            <a href="https://www.instagram.com/kare_ieee_ras" target="_blank"><button>Instagram</button></a>
+            <a href="https://www.linkedin.com/company/kare-ieee-robotics-automation-society/"
+                target="_blank"><button>LinkedIn</button></a>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById("registrationForm").addEventListener("submit", async e => {
+            e.preventDefault();
+            const fd = new FormData(document.getElementById("registrationForm"));
+            await fetch("http://localhost:3000/register", { method: "POST", body: fd });
+            alert("Registration successful! QR will be sent to your email.");
+        });
+    </script>
+
+</body>
+
+</html>
